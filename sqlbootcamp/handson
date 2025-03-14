@@ -1,1 +1,110 @@
+1----
+SELECT department_id,count(*) astotal_employees
+ from hr.employees
+ group by department_id;
 
+2-----
+select department_id,avg(salary)as avg_salary
+from hr.employees 
+group by department_id;
+3----
+select department_id,max (salary)as max_salary,min(salary) as min_salary
+from hr.employees
+group by department_id;
+4------
+select department_id , sum(salary) as total_salary
+from hr.employees
+group by department_id;
+5------
+select job_id, count(*) as total_emloyees
+from hr.employees
+group by job_id;
+------counting the job role 
+6------
+select job_id ,avg(salary) as avg_salary
+from hr.employees
+group by job_id; 
+----checking the average salary of employee
+7----
+select job_id, max(salary) as max_salary
+from hr.employees
+group by job_id;
+------checking the max salary of employee
+8------
+select job_id , min(salary) as min_salary
+from hr.employees
+group by job_id;
+--------checking the min salary of employee
+9-------
+select job_id , sum (salary) as sum_salary
+from hr.employees
+group by job_id;
+------checking the total salary for employee
+10------
+select extract (year from hire_date)as hire_year,count (*)as total_employees
+from hr.employees
+group by extract (year from hire_date)
+order by hire_year;
+------checking this when was the employee had joined 
+11----------
+select d.location_id, sum(e.salary)as total_salary
+from hr.employees e
+join department d on e.department_id = d.department_id
+group by d.location_id;
+------checking  the location of employee 
+12-------
+select manager_id, count(*)as team_size
+from hr.employees
+where manager_id is not null
+group by manager_id;
+------every team as manager to lead
+13------
+select manager_id, max(salary)as max_salary
+from hr.employees
+where manager_id is not null 
+group by manager_id; 
+-------checking the max salary for manager
+14-------
+select manager_id, avg(salary)as avg_salary
+from hr.employee
+where manager_id ids not null
+group by manager_id;
+ =-------checking the average salary for manager
+ 15--------
+ select extract(month from hire_date)as hire_month,count(*)as total_hired 
+from hr.employee
+where extract(month from hire_date)
+group by hire_month;
+----------checking how many people have.  joined
+16----------
+select department_id,sum(salary)as total_salary
+from hr.employees
+group by department_id
+order by total_salary desc
+fetch first 1 row only;
+----checking total salary payed to employee in descending order
+17--------
+select department_id, avg(salary)as avg_salary
+from hr.employees
+group by department_id
+order by avg_salary desc
+fetch first 1 row only;
+18---------
+select l.city,count(*)as total_employees
+ from hr.employee e
+ join d department on e.department_id=d.department_id
+ join l location on d.location_id=e.location_id
+ group by l.city;
+ -------checking the employee from which city they belong
+ 19--------
+ select department_id, count(*)as employee_with_ commision 
+ from hr.employees
+ where commision_pct is not null 
+ group by department_id; 
+ -----checking the how much employee getting the commision
+ 20-------
+ select department_id , count(*) as total_salary_with_commision
+ from hr.employee
+ where commision_pct is not null 
+ group by department_id;
+ -------sum of salary of commision getting to employee
