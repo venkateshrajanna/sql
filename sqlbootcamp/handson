@@ -305,17 +305,3 @@ INNER JOIN departments d ON e.department_id = d.department_id
 INNER JOIN locations l ON p.location_id = l.location_id
 WHERE d.location_id <> p.location_id;
 
-SELECT
-    EMPLOYEE_ID,
-    FIRST_NAME,
-    LAST_NAME,
-    EMAIL,
-    PHONE_NUMBER,
-    HIRE_DATE,
-    JOB_ID,
-    SALARY,
-    COMMISSION_PCT,
-    MANAGER_ID,
-    DEPARTMENT_ID
-FROM
-    HR.EMPLOYEES;
